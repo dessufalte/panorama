@@ -280,15 +280,13 @@ const menuData = {
       id: 17,
       name: "Smoothie Mangga",
       price: 15000,
-      imageUrl:
-        "/menu/smo-mg.jpg",
+      imageUrl: "/menu/smo-mg.jpg",
     },
     {
       id: 18,
       name: "Smoothie Alpukat",
       price: 15000,
-      imageUrl:
-        "/menu/smo-alp.jpg",
+      imageUrl: "/menu/smo-alp.jpg",
     },
     {
       id: 19,
@@ -450,7 +448,7 @@ function Navbar() {
     { name: "Fasilitas", href: "#wisata" },
   ];
   return (
-    <nav className="bg-white/20 backdrop-blur-xl border-b border-white/30 sticky top-0 z-30 shadow-lg">
+    <nav className="bg-white/20 backdrop-blur-xl border-b border-white/30 sticky top-0 z-30 shadow-lg opacity-75">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -833,40 +831,30 @@ export default function Home() {
         : { [activeCategory]: menuData[activeCategory] };
 
     let filtered = {};
-    for (const category in dataToFilter) {
-      if (category !== "wisata") {
-        let items = dataToFilter[category];
-        if (searchTerm) {
-          items = items.filter((item) =>
-            item.name.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        }
-        filtered[category] = items;
-      }
-    }
 
-    let allItems = Object.values(filtered).flat();
-    switch (sortOrder) {
-      case "name-asc":
-        allItems.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case "name-desc":
-        allItems.sort((a, b) => b.name.localeCompare(a.name));
-        break;
-      case "price-asc":
-        allItems.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
-        break;
-      case "price-desc":
-        allItems.sort(
-          (a, b) => (b.price ?? -Infinity) - (a.price ?? -Infinity)
-        );
-        break;
-      default:
-        break;
-    }
+    // Filter berdasarkan pencarian
+    Object.keys(dataToFilter).forEach((category) => {
+      filtered[category] = dataToFilter[category].filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
 
-    if (activeCategory === "semua" && sortOrder !== "default") {
-      return { all_sorted: allItems };
+    // Sorting
+    if (sortOrder !== "default") {
+      const [key, order] = sortOrder.split("-");
+      Object.keys(filtered).forEach((category) => {
+        filtered[category] = [...filtered[category]].sort((a, b) => {
+          if (key === "name") {
+            return order === "asc"
+              ? a.name.localeCompare(b.name)
+              : b.name.localeCompare(a.name);
+          }
+          if (key === "price") {
+            return order === "asc" ? a.price - b.price : b.price - a.price;
+          }
+          return 0;
+        });
+      });
     }
 
     return filtered;
@@ -902,7 +890,10 @@ export default function Home() {
         <Navbar />
         <div className="flex flex-1 overflow-hidden">
           <main className="flex-1 overflow-y-auto scroll-smooth">
-            <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8" id="menu-utama">
+            <div
+              className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8"
+              id="menu-utama"
+            >
               <MenuControls
                 onSearch={setSearchTerm}
                 onSort={setSortOrder}
