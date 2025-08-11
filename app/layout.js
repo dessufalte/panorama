@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Panorama Cafe",
   description: "Menu Cafe Panorama",
+  icons: {
+    icon: '/panorama.jpeg', // path relatif dari folder public
+  },
 };
 
 export default function RootLayout({ children }) {
