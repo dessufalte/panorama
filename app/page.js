@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
-
+import TentangWebsite from "./about";
 // --- ICONS ---
 const PlusIcon = () => (
   <svg
@@ -446,6 +446,7 @@ function Navbar() {
   const navLinks = [
     { name: "Menu", href: "#menu-utama" },
     { name: "Fasilitas", href: "#wisata" },
+    { name: "Tentang", href: "#tentang" },
   ];
   return (
     <nav className="bg-white/20 backdrop-blur-xl border-b border-white/30 sticky top-0 z-30 shadow-lg opacity-75">
@@ -942,6 +943,7 @@ export default function Home() {
                   ))}
                 </div>
               </section>
+              <TentangWebsite />
             </div>
           </main>
           <div className="hidden lg:block h-full">{orderSidebarContent}</div>
