@@ -193,7 +193,7 @@ const menuData = {
     {
       id: 6,
       name: "Ikan Asin Lado Hijau + Jengkol",
-      price: 12000,
+      price: 15000,
       imageUrl: "/menu/ikas-hi.jpeg",
     },
     {
@@ -217,31 +217,31 @@ const menuData = {
     {
       id: 10,
       name: "Mie Kwetiaw Goreng",
-      price: 17000,
+      price: 18000,
       imageUrl: "/menu/kwe-go.jpeg",
     },
     {
       id: 11,
       name: "Mie Kwetiaw Special",
-      price: 17000,
+      price: 25000,
       imageUrl: "/menu/kwe-sp.jpg",
     },
     {
       id: 12,
       name: "Mie Goreng",
-      price: 12000,
+      price: 13000,
       imageUrl: "/menu/migo.jpg",
     },
     {
       id: 13,
-      name: "Mie Goreng Special",
-      price: 18000,
+      name: "Mie Goreng Jumbo",
+      price: 15000,
       imageUrl: "/menu/migo-sp.jpg",
     },
     {
       id: 14,
       name: "Mie Rebus",
-      price: 12000,
+      price: 13000,
       imageUrl: "/menu/mire.jpg",
     },
     {
@@ -297,7 +297,7 @@ const menuData = {
     {
       id: 20,
       name: "Varian Juice",
-      price: 10000,
+      price: 12000,
       imageUrl: "/menu/jus.jpg",
     },
     {
@@ -369,7 +369,7 @@ const menuData = {
     {
       id: 37,
       name: "Capuccino Cincau",
-      price: 7000,
+      price: 8000,
       imageUrl: "/menu/cap-cin.jpg",
     },
     {
@@ -383,13 +383,13 @@ const menuData = {
     {
       id: 27,
       name: "Kentang Goreng",
-      price: 10000,
+      price: 15000,
       imageUrl: "/menu/ken.jpeg",
     },
     {
       id: 28,
       name: "Nugget",
-      price: 10000,
+      price: 15000,
       imageUrl: "/menu/nug.jpg",
     },
     {
